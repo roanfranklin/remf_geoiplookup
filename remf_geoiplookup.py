@@ -1,18 +1,24 @@
 #!/usr/bin/python3
 # pip3 install xmltodict
 # pip3 install pyfiglet
+# pip3 install colorama
 
 import os, sys, xmltodict, requests, json
 import pyfiglet
+import colorama
+from colorama import Fore, Style
 
 def logo():
     os.system("clear")
 
     ascii_banner = pyfiglet.figlet_format("REMF - GeoIP")
-    print(ascii_banner)
+    print(Style.BRIGHT+Fore.BLUE+ascii_banner)
+    print(Fore.YELLOW+' [ '+Fore.WHITE+'REMF.COM.BR'+Fore.YELLOW+' - '+Fore.WHITE+'Geolocalização IP'+Fore.YELLOW+' ]'+Style.RESET_ALL)
 
 def ajuda():
-    print('\n Usar: ', sys.argv[0], ' IP_VÁLIDO\n')
+    print(' '+Fore.CYAN)
+    print(' Use: ', sys.argv[0], ' IP_VÁLIDO')
+    print(Style.RESET_ALL+' ')
 
 def gIP(IP):    
     URL = "http://api.geoiplookup.net/?query=" + IP
@@ -24,15 +30,15 @@ def gIP(IP):
     type(data)
 
     print(' ')
-    print('        IP: {}' . format(data['ip']['results']['result']['ip']))
-    print('      Host: {}' . format(data['ip']['results']['result']['host']))
-    print('       ISP: {}' . format(data['ip']['results']['result']['isp']))
-    print('    Cidade: {}' . format(data['ip']['results']['result']['city']))
-    print(' País(Cod): {}' . format(data['ip']['results']['result']['countrycode']))
-    print('      País: {}' . format(data['ip']['results']['result']['countryname']))
-    print('  Latitude: {}' . format(data['ip']['results']['result']['latitude']))
-    print(' Longitude: {}' . format(data['ip']['results']['result']['longitude']))
-    print(' ')
+    print(Style.BRIGHT+Fore.BLUE+'        IP:'+Fore.WHITE+' {}' . format(data['ip']['results']['result']['ip']))
+    print(Style.BRIGHT+Fore.BLUE+'      Host:'+Fore.WHITE+' {}' . format(data['ip']['results']['result']['host']))
+    print(Style.BRIGHT+Fore.BLUE+'       ISP:'+Fore.WHITE+' {}' . format(data['ip']['results']['result']['isp']))
+    print(Style.BRIGHT+Fore.BLUE+'    Cidade:'+Fore.WHITE+' {}' . format(data['ip']['results']['result']['city']))
+    print(Style.BRIGHT+Fore.BLUE+' País(Cod):'+Fore.WHITE+' {}' . format(data['ip']['results']['result']['countrycode']))
+    print(Style.BRIGHT+Fore.BLUE+'      País:'+Fore.WHITE+' {}' . format(data['ip']['results']['result']['countryname']))
+    print(Style.BRIGHT+Fore.BLUE+'  Latitude:'+Fore.WHITE+' {}' . format(data['ip']['results']['result']['latitude']))
+    print(Style.BRIGHT+Fore.BLUE+' Longitude:'+Fore.WHITE+' {}' . format(data['ip']['results']['result']['longitude']))
+    print(' '+Style.RESET_ALL)
 
 def main():
     logo()
