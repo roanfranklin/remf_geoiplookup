@@ -17,7 +17,7 @@ def logo():
 
 def ajuda():
     print(' '+Fore.CYAN)
-    print(' Use: ', sys.argv[0], ' IP_VÁLIDO')
+    print(' Use:', sys.argv[0], '[ IP_VALIDO ]')
     print(Style.RESET_ALL+' ')
 
 def gIP(IP):    
